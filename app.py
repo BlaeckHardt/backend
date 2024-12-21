@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify
 from openpyxl import load_workbook, Workbook
 
@@ -47,4 +48,5 @@ def get_data():
     return jsonify(response), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 8000))
+    app.run(host='0.0.0.0', port=port)
